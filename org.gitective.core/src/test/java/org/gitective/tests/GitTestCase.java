@@ -82,7 +82,7 @@ public abstract class GitTestCase extends Assert {
 	protected File initRepo() throws GitAPIException {
 		String tmpDir = System.getProperty("java.io.tmpdir");
 		assertNotNull("java.io.tmpdir was null", tmpDir);
-		File dir = new File(tmpDir, "git-test-case-" + System.nanoTime());
+		File dir = new File(tmpDir, "git-test-case-" + System.nanoTime() + Thread.currentThread().getId());
 		assertTrue(dir.mkdir());
 
 		Git.init().setDirectory(dir).setBare(false).call();
